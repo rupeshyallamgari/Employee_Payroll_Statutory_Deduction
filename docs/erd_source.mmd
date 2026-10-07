@@ -1,0 +1,6 @@
+erDiagram
+    DEPARTMENTS ||--o{ EMPLOYEES : contains
+    EMPLOYEES ||--o{ PAYROLL : receives
+    DEPARTMENTS { int department_id PK string department_name }
+    EMPLOYEES { int employee_id PK string employee_code UK string first_name string last_name int department_id FK string designation real basic_salary string status }
+    PAYROLL { int payroll_id PK int employee_id FK string pay_month real gross_salary real pf real esi real professional_tax real tds real total_deductions real net_salary }

@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block title %}Reports • PayPro{% endblock %}{% block content %}
+<div class="page-head"><div><p class="eyebrow">ANALYTICS</p><h1>Payroll Reports</h1></div></div>
+<section class="panel"><h2>Department-wise Summary</h2><div class="table-wrap"><table><tr><th>Department</th><th>Employees</th><th>Gross Payroll</th><th>Deductions</th><th>Net Payroll</th></tr>{% for r in by_dept %}<tr><td>{{r.department_name}}</td><td>{{r.employees}}</td><td>₹{{'%.2f'|format(r.gross)}}</td><td>₹{{'%.2f'|format(r.deductions)}}</td><td><b>₹{{'%.2f'|format(r.net)}}</b></td></tr>{% endfor %}</table></div></section>
+{% endblock %}
