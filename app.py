@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 from pathlib import Path
+import os
 from datetime import date
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -27,6 +28,9 @@ def init_db():
         conn.executescript(seed)
     conn.commit()
     conn.close()
+
+
+init_db()
 
 
 def calculate_gross(basic, hra, allowance, bonus):
@@ -169,5 +173,5 @@ def about():
 
 
 if __name__ == '__main__':
-    init_db()
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
